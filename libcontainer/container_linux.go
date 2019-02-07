@@ -25,7 +25,7 @@ import (
 	"github.com/opencontainers/runc/libcontainer/intelrdt"
 	"github.com/opencontainers/runc/libcontainer/system"
 	"github.com/opencontainers/runc/libcontainer/utils"
-	"github.com/opencontainers/runtime-spec/specs-go"
+	specs "github.com/opencontainers/runtime-spec/specs-go"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/sirupsen/logrus"
@@ -938,6 +938,7 @@ func (c *linuxContainer) Checkpoint(criuOpts *CriuOpts) error {
 		OrphanPtsMaster: proto.Bool(true),
 		AutoDedup:       proto.Bool(criuOpts.AutoDedup),
 		LazyPages:       proto.Bool(criuOpts.LazyPages),
+		TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
 	}
 
 	// If the container is running in a network namespace and has
@@ -1187,6 +1188,7 @@ func (c *linuxContainer) Restore(process *Process, criuOpts *CriuOpts) error {
 			OrphanPtsMaster: proto.Bool(true),
 			AutoDedup:       proto.Bool(criuOpts.AutoDedup),
 			LazyPages:       proto.Bool(criuOpts.LazyPages),
+			TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
 		},
 	}
 
