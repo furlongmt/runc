@@ -938,7 +938,8 @@ func (c *linuxContainer) Checkpoint(criuOpts *CriuOpts) error {
 		OrphanPtsMaster: proto.Bool(true),
 		AutoDedup:       proto.Bool(criuOpts.AutoDedup),
 		LazyPages:       proto.Bool(criuOpts.LazyPages),
-		TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
+		//TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
+		TcpSkipInFlight: proto.Bool(true),
 	}
 
 	// If the container is running in a network namespace and has
