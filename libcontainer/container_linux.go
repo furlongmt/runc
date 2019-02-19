@@ -932,14 +932,13 @@ func (c *linuxContainer) Checkpoint(criuOpts *CriuOpts) error {
 		ShellJob:        proto.Bool(criuOpts.ShellJob),
 		LeaveRunning:    proto.Bool(criuOpts.LeaveRunning),
 		TcpEstablished:  proto.Bool(criuOpts.TcpEstablished),
+		TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
 		ExtUnixSk:       proto.Bool(criuOpts.ExternalUnixConnections),
 		FileLocks:       proto.Bool(criuOpts.FileLocks),
 		EmptyNs:         proto.Uint32(criuOpts.EmptyNs),
 		OrphanPtsMaster: proto.Bool(true),
 		AutoDedup:       proto.Bool(criuOpts.AutoDedup),
 		LazyPages:       proto.Bool(criuOpts.LazyPages),
-		//TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
-		TcpSkipInFlight: proto.Bool(true),
 	}
 
 	// If the container is running in a network namespace and has
@@ -1184,12 +1183,12 @@ func (c *linuxContainer) Restore(process *Process, criuOpts *CriuOpts) error {
 			ShellJob:        proto.Bool(criuOpts.ShellJob),
 			ExtUnixSk:       proto.Bool(criuOpts.ExternalUnixConnections),
 			TcpEstablished:  proto.Bool(criuOpts.TcpEstablished),
+			TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
 			FileLocks:       proto.Bool(criuOpts.FileLocks),
 			EmptyNs:         proto.Uint32(criuOpts.EmptyNs),
 			OrphanPtsMaster: proto.Bool(true),
 			AutoDedup:       proto.Bool(criuOpts.AutoDedup),
 			LazyPages:       proto.Bool(criuOpts.LazyPages),
-			TcpSkipInFlight: proto.Bool(criuOpts.TcpSkipInFlight),
 		},
 	}
 
